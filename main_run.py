@@ -1,11 +1,11 @@
 # Author : Pawan Trivedi -- Docker
-#          Arvind        -- AWS  
+#          Aravind       -- AWS  
 #          Shudha        -- Hadoop
 
 
 from dockerscript import *
 from awsscript import *
-from hadoop import *
+from hadoop1 import *
 import os
 
 while True:

@@ -1,104 +1,159 @@
-	
-def hadoop():	
+def hadoop():
 	import os
-	os.system("tput setaf 3")
-	print("\t\t\t\tpikachu welcomes you...")
-	os.system("tput setaf 7")
-	print("\t\t\t\t--------------------------")
-
-	def core():
-		nn_ip = input('enter namenode ip and hadoop port eg. hdfs://1.2.3.4:9000:')
-		print(nn_ip)
-		os.system('echo \<configuration\> >> core-site.xml')
-		os.system('echo \<property\> >> core.site.xml')
-		os.system("echo \<name\>fs.default.name\<\/name\> >> core.site.xml")
-		os.system("echo \<value\>{}\<\/value\> >> core.site.xml".format(nn_ip))
-		os.system('echo \<\/property\> >> core.site.xml')
-		os.system("echo \<\/configuration\> >> core-site.xml")
-		os.system("scp core-site.xml {}:/etc/hadoop/core.site.xml".format(ip))
-		os.system("rpm -rf core-site.xml")
-		os.system("cp cp.xml core-site.xml")
-
-	def hdfs():
-		dndir=input('enter any directory name you want too create for datanode:')
-		print(dndir)
-		os.system('echo \<configuration\> >> hdfs-site.xml')
-		os.system('echo \<property\> >> hdfs.site.xml')
-		os.system("echo \<name\>dfs.default.name\<\/name\> >> hdfs.site.xml")
-		os.system("echo \<value\>{}\<\/value\> >> hdfs.site.xml".format(dndir))
-		os.system('echo \<\/property\> >> hdfs.site.xml')
-		os.system("echo \<\/configuration\> >> hdfs-site.xml")
-		os.system("scp hdfs-site.xml {}:/etc/hadoop/hdfs.site.xml".format(ip))
-		os.system("rpm -rf hdfs-site.xml")
-		os.system("cp hd.xml hdfs-site.xml")		
-	def data():
-		dir=input('enter any directory name where java and hadoop file resides:')
-		print(dir) 
-		os.system("ssh {} rpm -i {}/jdk-8u171-linux-x64.rpm".format(ip,dir))
-		os.system("ssh {} rpm -i {}\/hadoop-1.2.1-1.x86_64.rpm --force".format(ip,dir))
-		core()
-		hdfs()
-		os.system("ssh {} hadoop-daemon.sh start datanod".format(ip))
-		os.system("ssh {} jps".format(ip))		
+	def software():
+	    print("\t\tInstalling jdk")
+	    os.system("rpm -ivh jdk-8u171-linux-x64.rpm -y")
+	    print("\t\tInstalling hadoop")
+	    os.system("rpm -ivh hadoop-1.2.1-1.x86_64.rpm --force -y")
+	    
+	def datanode():
+	    print("\t\t\tDATANODE SETUP")
+	    software()
+	    datanode_folder = input("\t\t\tFolder name for datanode:")
+	    os.system("rm -rf {}".format(datanode_folder))
+	    os.system("mkdir {}".format(datanode_folder))
+	    namenode_IP = input("\t\t\tProvide namenode IP: ")
+	    namenode_port = input("\t\t\tProvide port number of namenode: ")
+	    file_hdfs_dn = open("/etc/hadoop/hdfs-site.xml","w")#opening hdfs-site.xml file
+		 #data of hdfs of datanode
+	    hdfs_data_dn =  '''<?xml version="1.0"?>
+	    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 	 
-	r = input('HOE U WANT TO LOGIN AS?(LOCL/REMOTE)')
-	print(r)
-	print("\n\n")
-	print("""
-		press 1: data
-		press 2: cal
-		press 3: configure_data_node
-		press 4: create_new_user
-		press 5: partitioning
-		press 6:hadoop -ls
-		""") 
-	if r == "local":
-		i = input("enter ur choice")
-		print(i)
-		if i==1:
-			os.system("ssh {} data".format(ip))
-		elif i==2:
-			os.system("cal")
-		elif i==3:
-			print("hello")
-			data()
-		else:
-			os.system("hadoop dfsadmin -report")
-		
-	else:
-		ip = input('enter remote ip:')
-		print(ip)
-		q = input("enter ur choice")
-		print(q)
-		if q==1:
-			print("hello")
-			os.system('ssh root@{} date'.format(ip))
-		elif q==2:
-			os.system("cal")
-		elif q==3:
-			data()
-		else:
-			os.system("hadoop dfsadmin -report")
+	    <!-- Put site-specific property overrides in this file. -->
+	    <configuration>
+	    <property>
+	    <name>dfs.data.dir</name>
+	    <value>{}</value>
+	    </property>
+	    </configuration>\n'''.format(datanode_folder)
+	    file_hdfs_dn.write(hdfs_data_dn) #writing the data
+
+	    file_core_dn = open("/etc/hadoop/core-site.xml", "w")#opening core-site.xml file
+	    core_data_dn = '''<?xml version="1.0"?>
+	    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+	    <!-- Put site-specific property overrides in this file. -->
+	    <configuration>
+	    <property>
+	    <name>fs.default.name</name>
+	    <value>hdfs://{}:{}</value>
+	    </property>
+	    </configuration>\n'''.format(namenode_IP,namenode_port)
+	    file_core_dn.write(core_data_dn) 
+	    subprocess.getoutput("hadoop-daemon.sh start datanode")  
+	    subprocess.getoutput("jps")
+	    print("Datanode Started")
+
+	def namenode():
+	    print("\t\t\tNAMENODE SETUP")
+	    software()
+	    namenode_folder = input("\t\t\tFolder name for namenode:")
+	    os.system("rm -rf {}".format(namenode_folder))
+	    os.system("mkdir {}".format(namenode_folder))
+	    os.system("hadoop namenode --format")
+	    namenode_IP = input("\t\t\tProvide namenode IP: ")
+	    namenode_port = input("\t\t\tProvide port number of namenode: ")
+	    file_hdfs_nn = open("/etc/hadoop/hdfs-site.xml","w")#opening hdfs-site.xml file
+		 #data of hdfs of datanode
+	    hdfs_data_nn =  '''<?xml version="1.0"?>
+	    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+		 
+	    <!-- Put site-specific property overrides in this file. -->
+	    <configuration>
+	    <property>
+	    <name>dfs.name.dir</name>
+	    <value>{}</value>
+	    </property>
+	    </configuration>\n'''.format(namenode_folder)   
+	    file_hdfs_nn.write(hdfs_data_nn) #writing the data
+
+	    file_core_nn = open("/etc/hadoop/core-site.xml", "w")#opening core-site.xml file
+	    core_data_nn = '''<?xml version="1.0"?>
+	    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+	    <!-- Put site-specific property overrides in this file. -->
+	    <configuration>
+	    <property>
+	    <name>fs.default.name</name>
+	    <value>hdfs://{}:{}</value>
+	    </property>
+	    </configuration>\n'''.format(namenode_IP,namenode_port)
+	    file_core_nn.write(core_data_nn)   
+	    subprocess.getoutput("hadoop-daemon.sh start namenode")
+	    subprocess.getoutput("jps")
+	    print("Namenode Started")
+
+	def client():
+	    print("\t\t\tCLIENT SETUP")
+	    software()
+	    namenode_IP = input("\t\t\tProvide namenode IP: ")
+	    namenode_port = input("\t\t\tProvide port number of namenode: ")
+	    file_core_nn = open("/etc/hadoop/core-site.xml", "w")#opening core-site.xml file
+	    core_data_nn = '''<?xml version="1.0"?>
+	    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+	    <!-- Put site-specific property overrides in this file. -->
+	    <configuration>
+	    <property>
+	    <name>fs.default.name</name>
+	    <value>hdfs://{}:{}</value>
+	    </property>
+	    </configuration>\n'''.format(namenode_IP,namenode_port)
+	    file_core_nn.write(core_data_nn)
+
+	def putfile():
+	    fname=input("\t\tEnter your filename : ")
+	    st=subprocess.getouput("hadoop fs -put {} /".format(fname))
 
 
+	def delfile():
+	    fname=input("\t\tEnter your filename : ")
+	    st=subprocess.getouput("hadoop fs -rm  /{} ".format(fname))
+
+	def no_of_datanode():
+	    st=subprocess.getouput("hadoop dfsadmin report | less")
 
 
+	def files_on_cluster():
+	    st=subprocess.getouput("hadoop fs ls /")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	def read_files_from_cluster():
+	    fname=input("\t\tEnter your filename")
+	    st=subprocess.getouput("hadoop fs -cat /{}".format(fname))
+	    
+	    
+	while True:
+		os.system("clear")
+		print("\t\t\tWELCOME TO MY HADOOP MENU")
+		print("""
+		\t\tPress 0 : To return to main menu
+		\t\tPress 1 : To create data node
+	    	\t\tPress 2 : To create name node
+		\t\tPress 3 : To create client
+		\t\tPress 4 : To upload file on cluster
+		\t\tPress 5 : To delete file on cluster 
+	    	\t\tPress 6 : To see all the datanodes on cluster
+	    	\t\tPress 7 : To see all the files on the cluster 
+	    	\t\tPress 8 : To read a file from cluster 
+		""")
+		print("\t\t==================================================")
+		ch=int(input("Enter your choice : "))
+		if   ch == 1:
+		    namenode()
+		elif ch == 2:
+		    datanode()
+		elif ch == 3:
+		    client()
+		elif ch == 4:
+		    putfile()
+		elif ch == 5:
+		    delfile()
+		elif ch == 6:
+		    no_of_datanode()
+		elif ch == 7:
+		    files_on_cluster()
+		elif ch == 8:
+		    read_files_from_cluster()
+		elif ch == 0:
+		    print("\t\t\tExit\n")
+		    a=False
+		else :
+		    print("\t\tNot supported")
+	
