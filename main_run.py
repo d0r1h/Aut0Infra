@@ -5,7 +5,7 @@
 
 from dockerscript import *
 from awsscript import *
-from hadoop1 import *
+from hadoop import *
 import os
 
 while True:
