@@ -1,8 +1,8 @@
-#AutoInfra
+# AutoInfra
 
 Doing your daily IT task and setting up IT infra in one click
 
-##Prerequisite
+## Prerequisite
 
 Redhat linux
 Python3 
