@@ -1,6 +1,6 @@
-# Author : Pawan Trivedi -- Docker
-#          Aravind       -- AWS  
-#          Shudha        -- Hadoop
+# Author : Dcoker -- Pawan Trivedi 
+#          AWS    -- Aravind        
+#          Hadoop -- Shudha       
 
 
 from dockerscript import *
@@ -10,7 +10,9 @@ import os
 
 while True:
     os.system('clear')
-    print('This Automation Script')
+    os.system('tput setaf 3')
+    print('\t\t\t This Automation Script')
+    os.system('tput setaf 7')
     
     print(''' 
 	1. Docker
