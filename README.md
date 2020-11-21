@@ -8,3 +8,6 @@ Redhat linux<br />
 Python3 
 
 Run main_run.py in python3 env.
+
+![alt text](Automation.png)
+
