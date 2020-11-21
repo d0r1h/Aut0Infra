@@ -1,5 +1,5 @@
 
-def aws():
+def awss():
 	import os
 	 
 

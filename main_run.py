@@ -1,17 +1,14 @@
-# Author : Dcoker -- Pawan Trivedi 
-#          AWS    -- Aravind        
-#          Hadoop -- Shudha       
-
-
 from dockerscript import *
-from awsscript import *
+from aws_cli.main_aws import *
 from hadoop import *
 import os
 
 while True:
     os.system('clear')
     os.system('tput setaf 3')
-    print('\t\t\t This Automation Script')
+    print('\t This Automation Script')
+    os.system('tput setaf 3')
+    print(' \t\t\t + -- -- +=[ Author : Pawan Trivedi ')
     os.system('tput setaf 7')
     
     print(''' 
