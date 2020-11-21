@@ -141,6 +141,3 @@ def docker():
 	    	exit()
 
 	    input("Enter to continue...")
-		
-
-
