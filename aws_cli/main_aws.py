@@ -34,5 +34,5 @@ def aws():
 				
 				
 			
-		input('\nEnter to continue')
+		input('\nEnter to continue ')
 
