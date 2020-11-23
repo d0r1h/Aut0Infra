@@ -1,6 +1,6 @@
 from dockerscript import *
 from aws_cli.main_aws import *
-from hadoop import *
+from hadoop.main_hadoop import *
 import os
 
 while True:
