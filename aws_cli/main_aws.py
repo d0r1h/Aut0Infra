@@ -8,7 +8,7 @@ def aws():
 
 
 	def awscli():
-		os.system('date')
+		os.system('aws configure')
 
 			
 	while True:
