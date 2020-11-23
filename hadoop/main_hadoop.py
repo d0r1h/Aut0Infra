@@ -10,12 +10,12 @@ def hadoop():
 		print('Welcome To The Hadoop Program')
 		print(''' 
 		1. Select Client 
-		2. Select Master / Name Node
-		3. Select Slave / Data Node
+		2. Select Master |Name Node
+		3. Select Slave | Data Node
 		4. Exit
 		''' )
 		
-		choice = input('Enter choice from menu program')
+		choice = input('Enter choice from menu program ')
 		
 		if int(choice) == 1:
 			client()
