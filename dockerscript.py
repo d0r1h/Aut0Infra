@@ -83,14 +83,7 @@ def docker():
 		  
 	    ''')
 	    os.system('tput setaf 7')
-	  
-	    os.system('tput setaf 3')
-	    print(''' \t
-	    + -- -- +=[ Author : Pawan Trivedi
-	    ''')
-	    os.system('tput setaf 7') 
-	    
-		
+	   	
 	    print('''\n
 		 0. Need to configure yum for Docker : Login as root
 		 1. Install Docker
