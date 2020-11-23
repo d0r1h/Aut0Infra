@@ -10,7 +10,7 @@ def master():
 	2. Setting up system as Master 
 	''')
 	
-	ch1 = input('Enter the choice from menu')
+	ch1 = input('Enter the choice from menu ')
 	
 	if int(ch1) == 1:
 		os.system('rpm -ivh jdk-8u171-linux-x64.rpm -y')
@@ -19,7 +19,7 @@ def master():
 				
 	elif int(ch1) == 2:
 		os.chdir('/')
-		folder_name = input('Enter the dir name to create')
+		folder_name = input('Enter the dir name to create ')
 		os.system('mkdir {}'.format(folder_name))
 		os.chdir('/etc/hadoop')
 		hdfs_config = open('hdfs-site.xml', w)
@@ -27,13 +27,13 @@ def master():
 		hdfs_config.close()
 		
 		core_site_config = open('core-site.xml', w)
-		ip = input('Enter master node IP')
-		port = input('Enter the port no.')
+		ip = input('Enter master node IP ')
+		port = input('Enter the port no. ')
 		core_site_config.write(''' \n<?xml version="1.0"?>\n<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>\n<!-- Put site-specific property overrides in this file. -->\n<configuration>\n<property>\n<name>fs.default.name</name>\n<value>hdfs://{}:{}</value>\n</property>\n</configuration\n'''.format(ip,port))
 		core_site_config.close()
 		
-		os.system('hadoop namenode -format')
-		os.system('hadoop-daemon.sh start namenode')
+		os.system('hadoop namenode -format ')
+		os.system('hadoop-daemon.sh start namenode ')
 		os.system('jps')
 		
 		
