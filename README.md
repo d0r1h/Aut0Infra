@@ -9,5 +9,17 @@ Python3
 
 Run main_run.py in python3 env.
 
-![alt text](Automation.png)
 
+.
+└── Automation-Task/
+    ├── dockerscript.py
+    ├── aws_cli/
+    │   ├── main_aws.py
+    │   ├── ec2.py
+    │   └── s3.py
+    ├── hadoop/
+    │   ├── main_hadoop.py
+    │   ├── master.py
+    │   ├── slave.py
+    │   └── client.py
+    └── README.md
