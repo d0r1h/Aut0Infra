@@ -11,15 +11,15 @@ Run main_run.py in python3 env.
 
 
 .
-└── Automation-Task/
-    ├── dockerscript.py
-    ├── aws_cli/
-    │   ├── main_aws.py
-    │   ├── ec2.py
-    │   └── s3.py
-    ├── hadoop/
-    │   ├── main_hadoop.py
-    │   ├── master.py
-    │   ├── slave.py
-    │   └── client.py
-    └── README.md
+└── Automation-Task/     <br />
+    ├── dockerscript.py  <br />
+    ├── aws_cli/         <br />
+    │   ├── main_aws.py  <br />
+    │   ├── ec2.py       <br />
+    │   └── s3.py       <br />
+    ├── hadoop/         <br />
+    │   ├── main_hadoop.py<br />
+    │   ├── master.py     <br />
+    │   ├── slave.py      <br />
+    │   └── client.py     <br />
+    └── README.md        <br />
