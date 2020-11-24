@@ -2,7 +2,7 @@
 
 Doing your daily IT task and setting up IT infra in one click
 
-## Prerequisite
+## Requirements
 
 Redhat linux<br />
 Python3 
