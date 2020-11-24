@@ -9,5 +9,5 @@ Python3
 
 Run main_run.py in python3 env.
 
-![][](Automation.png)
+![](Automation.png)
 
