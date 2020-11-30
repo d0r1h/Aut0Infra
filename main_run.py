@@ -5,10 +5,17 @@ import os
 
 while True:
     os.system('clear')
+    os.system('tput setaf 4')
+    print('''  
+           _              _      ___    ___            __                
+          / \     _   _  | |_   / _ \  |_ _|  _ __    / _|  _ __    __ _ 
+         / _ \   | | | | | __| | | | |  | |  | '_ \  | |_  | '__|  / _` |
+        / ___ \  | |_| | | |_  | |_| |  | |  | | | | |  _| | |    | (_| |
+       /_/   \_\  \__,_|  \__|  \___/  |___| |_| |_| |_|   |_|     \__,_|
+      
+    ''')
     os.system('tput setaf 3')
-    print('\t This Automation Script')
-    os.system('tput setaf 3')
-    print(' \t\t\t + -- -- +=[ Author : Pawan Trivedi ')
+    print(' \t\t\t\t\t + -- -- +=[ Author : Pawan Trivedi ')
     os.system('tput setaf 7')
     
     print(''' 
