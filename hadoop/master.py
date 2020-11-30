@@ -13,8 +13,8 @@ def master():
 	ch1 = input('Enter the choice from menu ')
 	
 	if int(ch1) == 1:
-		os.system('rpm -ivh jdk-8u171-linux-x64.rpm -y')
-		os.system('rpm -ivh hadoop-1.2.1-1.x86_64.rpm --force -y')
+		os.system('rpm -ivh jdk-8u171-linux-x64.rpm')
+		os.system('rpm -ivh hadoop-1.2.1-1.x86_64.rpm --force')
 		
 				
 	elif int(ch1) == 2:
