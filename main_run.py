@@ -24,7 +24,7 @@ while True:
 	3. Hadoop
 	4. Exit 		
 	''')
-    choice = input('Make a selceion from ')
+    choice = input('Make a selection from ')
 
     if int(choice) == 1:
 	    docker()

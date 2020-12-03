@@ -1,6 +1,7 @@
 # AutoInfra
 
 ![](Aut0Infra.png)
+
 Tool to perform your daily IT task and setting up IT infrastructure in one click
 
 ## Prerequisites
