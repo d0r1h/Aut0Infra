@@ -10,7 +10,6 @@ Tool to perform your daily IT task and setting up IT infrastructure in one click
 	Python3 
 
 
-This 
 
 ## Installation
 
