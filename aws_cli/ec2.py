@@ -17,13 +17,13 @@ def ec2():
 		
 		ch2 = input('\nEnter your choice ')
 		if int(ch2) == 1:
-			instance_id = input('Enter the instance id')
+			instance_id = input('Enter the instance id ')
 			os.system('aws ec2 start-instances --instance-id {}'.format(instance_id))
 		elif int(ch2) == 2:
-			instance_id  = input('Enter the instance id')
+			instance_id  = input('Enter the instance id ')
 			os.system('aws ec2 stop-instances --instance-id {}'.format(instance_id))
 		elif int(ch2) == 3:
-			instance_id = input('Enter the instance id')
+			instance_id = input('Enter the instance id ')
 			os.system('aws ec2 terminate-instances --instance-ids {}'.format(instance_id))
 		elif int(ch2) == 4:
 			print('\nAvailable Security group')
