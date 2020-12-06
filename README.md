@@ -22,11 +22,11 @@ Run main_run.py in python3 env.
 
 ## Notes
 
-	* Hadoop
+* Hadoop
 		Setting Up Master, Slave and Client nodes at one click.
-	* Docker
+* Docker
 		Running and managing container.
-	* Aws 
+* Aws 
 		Managing ec2 and s3 service.
 
 ![](Automation.png)
