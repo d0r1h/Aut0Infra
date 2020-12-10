@@ -2,7 +2,7 @@
 
 ![](Aut0Infra.png)
 
-Tool to perform your daily IT task and setting up IT infrastructure in one click. Aut0Infra follows the principle of abstraction. So you don't need to worry about if youdo not know the docker commands still you can lauch and work with it and it same goes with Hadoop technology, and you can lauch ec2 instance at large scale in single click. 
+Tool to perform your daily IT task and setting up IT infrastructure in one click. Aut0Infra follows the principle of abstraction. So you don't need to worry about if you do not know the docker commands still you can launch and work with it and it same goes with Hadoop technology, and you can launch ec2 instance at the large scale in a single click. 
 
 ## Prerequisites
 
